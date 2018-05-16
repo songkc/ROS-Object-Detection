@@ -18,7 +18,7 @@ Python: python3.5
 
 C++: C++11
 
-### 1.1 Ubuntu16.04 python2.7升级python3.5
+### 1.1 Ubuntu16.04 安装 python3.5
 
 在终端下输入以下命令：
 
@@ -26,14 +26,8 @@ C++: C++11
 # 安装python3.5
 $ sudo apt-get install python3
 
-# 备份python2.7的链接
-$ sudo cp /usr/bin/python /usr/bin/python_bak
-
-# 删除原来默认指向python2.7版本的链接
-$ sudo rm /usr/bin/python
-
-# 重新指定新的链接给python3.5版本
-$ sudo ln -s /usr/bin/python3 /usr/bin/python
+# 安装pip
+$ sudo apt install python-pip
 ```
 
 ### 1.2 配置virtualenv
@@ -41,23 +35,17 @@ $ sudo ln -s /usr/bin/python3 /usr/bin/python
 在终端下输入以下命令：
 
 ```shell
-# 安装pip3
-$ sudo apt-get install python3-pip
-
 # 安装virtualenv
-$ pip3 install virtualenv
-
-# 进入工作空间workspace下
-$ cd ~/catkin_ws/src
+$ sudo pip install virtualenv
 
 # 创建venv
-$ virtualenv --no-site-packages venv
+$ virtualenv rosenv -p /usr/bin/python3.5
 
 # 安装依赖包
-$ pip3 install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
-开发时需要先在工作空间下输入命令`source venv/bin/activate`，退出时输入命令`deactivate`
+开发时需要先进入虚拟环境通过输入命令`source venv/bin/activate`，退出时输入命令`deactivate`
 
 
 
@@ -66,6 +54,7 @@ $ pip3 install -r requirements.txt
 ```
 |-rosproject/
     |-msg/
+    |-images/                       # 相关图片
     |-scripts/                      # 脚本文件夹
         |-cloud_server.py           # 云服务计算
         |-object_detection.py       # 物体检测识别
@@ -80,11 +69,11 @@ $ pip3 install -r requirements.txt
 
 ## 3. 项目架构
 
-![system](system.png)
+![system](/Users/songkc/Desktop/Cloud-Robot-ROS/rosproject/images/system.png)
 
 
 
-![details](details.png)
+![details](/Users/songkc/Desktop/Cloud-Robot-ROS/rosproject/images/details.png)
 
 
 
