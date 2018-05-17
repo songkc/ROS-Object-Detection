@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<!--
+	Fractal by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+            <title>Fractal by HTML5</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon">
+            <link rel="stylesheet" href="static/css/style.css" type="text/css">
+    </head>
+
+    <body>
+        <div class="container">
+            <video id="video" muted autoplay class="videoarea">Not support</video>
+            <canvas id="canvas" class="videoarea"></canvas>
+		    <button id="snap" class="button blue big">Capture</button>
+        </div>
+        
+        <script src="{{ url_for('static', filename='js/webcam.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    </body>
+</html>
