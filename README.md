@@ -56,9 +56,19 @@ $ pip install -r requirements.txt
     |-msg/
     |-images/                       # 相关图片
     |-scripts/                      # 脚本文件夹
-        |-cloud_server.py           # 云服务计算
+    	|-static/                   # 静态文件
+    		|-css/                  # css样式文件
+    			|-style.css
+    		|-images/               # 图片、图标
+    			|-favicon.ico
+    		|-js/                   # js文件
+    			|-jquery.js
+    			|-webcam.js
+   		|-templates/                # html模版
+   			|-index.html
+        |-cloud_server.py           # 服务器节点
         |-object_detection.py       # 物体检测识别
-        |-web_server.py             # web后端
+        |-web_server.py             # web端
     |-CMakeLists.txt                # 程序包元信息
     |-package.xml
     |-README.md                     # README
@@ -69,11 +79,11 @@ $ pip install -r requirements.txt
 
 ## 3. 项目架构
 
-![system](/Users/songkc/Desktop/Cloud-Robot-ROS/rosproject/images/system.png)
+![system](./images/system.png)
 
 
 
-![details](/Users/songkc/Desktop/Cloud-Robot-ROS/rosproject/images/details.png)
+![details](./images/details.png)
 
 
 
@@ -83,10 +93,12 @@ $ pip install -r requirements.txt
 
 * 物体检测模块
 
+* web端
+
 未完成：
 
-* web服务端
-* 云端
+* 服务器节点
+* 机器人节点
 * 数据库
 
 
