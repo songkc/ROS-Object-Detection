@@ -1,2 +1,4 @@
 catkin-tools=0.4.4
 rospkg=1.1.4
+flask=1.0.2
+opencv-python=3.4.0.14
