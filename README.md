@@ -115,7 +115,7 @@ $ python object_detection/builders/model_builder_test.py
 |-rosproject/
     |-images/                       # 项目相关图片
     |-srv/                          # 存放定义的服务
-        |-Img.srv                   # 传输图片服务    
+        |-Img.srv                   # 图片服务    
     |-scripts/                      # 脚本文件夹
         |-input/                    # 存放上传的图片的文件夹
         |-output/                   # 存放识别后的图片的文件夹
@@ -124,15 +124,17 @@ $ python object_detection/builders/model_builder_test.py
                 |-style.css
             |-js/                   # js文件
                 |-jquery.js
-                |-webcam.js
+                |-upload.js
             |-images/               # 图片、图标
                 |-favicon.ico
    	    |-templates/                # html模版
+            |-base.html
    	        |-index.html
+            |-result.html
         |-object_detection/         # 存放物体识别配置的文件夹
         |-cloud_server.py           # 服务器节点
         |-robot_client.py           # 客户端节点
-        |-object_detection.py       # 物体识别
+        |-obj_detect.py             # 物体识别
         |-web_server.py             # web服务端
     |-CMakeLists.txt                # 程序包元信息
     |-package.xml                   # 软件包清单
@@ -186,18 +188,15 @@ $ rosrun rosproject cloud_server.py
 
 已完成：
 
+* web端（PC端可上传文件，移动端可上传本地文件或拍摄照片上传）
+* 机器人节点（对较大的图片进行压缩）
+* 服务器节点（进行物体识别）
 * 物体检测模块
-
-待完善：
-
-* web端（增加本地选择文件）
-
-* 服务器节点（结合物体检测模块）
-* 机器人节点（增加图片预处理）
 
 未完成：
 
 * 数据库
+* 训练模块
 
 
 

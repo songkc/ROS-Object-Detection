@@ -1,4 +1,5 @@
 #!usr/bin/env python3
+
 import numpy as np
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -8,6 +9,7 @@ import tarfile
 import tensorflow as tf
 import zipfile
 import cv2
+import base64
 
 from collections import defaultdict
 from io import StringIO
@@ -131,8 +133,7 @@ def run_inference_for_single_image(image, graph):
     return output_dict
 
 
-for image_path in TEST_IMAGE_PATHS:
-    print(image_path)
+def object_detection(image_path):
     image = Image.open(image_path)
     # the array based representation of the image will be used later in order to prepare the
     # result image with boxes and labels on it.
@@ -151,10 +152,13 @@ for image_path in TEST_IMAGE_PATHS:
         instance_masks=output_dict.get('detection_masks'),
         use_normalized_coordinates=True,
         line_thickness=8)
-    # plt.figure(figsize=IMAGE_SIZE)
-    # plt.imshow(image_np)
     (r, g, b) = cv2.split(image_np)
     img = cv2.merge([b, g, r])
-    cv2.imshow('img', img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.imshow('img', img)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
+    detect_image_path = 'output/detect_image.jpg'
+    cv2.imwrite(detect_image_path, img)
+    with open(detect_image_path, 'rb') as img:
+        image_b64 = base64.encodestring(img.read()).decode('gbk')
+    return image_b64

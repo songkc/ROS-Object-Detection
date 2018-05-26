@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <img src="{{ url_for('static', filename='images/web_image.jpg') }}" >
+    <a href="{{ url_for('index') }}" class="button blue big">Back</a>
+{% endblock %}

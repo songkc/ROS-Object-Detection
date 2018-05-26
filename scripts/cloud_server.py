@@ -3,22 +3,22 @@
 import cv2
 import rospy
 import base64
+import numpy as np
 from rosproject.srv import Img
+from obj_detect import object_detection
 
-def detect(req):
-    image_b64 = req.input
+def detect(request):
+    image_b64 = request.input
+    cloud_image_path = 'input/cloud_image.jpeg'
+
+    # transfrom format
     imgdata = base64.b64decode(image_b64)
-    cloud_image_path = 'input/image.jpg'
-    with open(cloud_image_path, 'wb') as f:
-        f.write(imgdata)
-    print('Server has successfully received image\n')
-    # imgstr = StringIO(base64.b64decode(image_b64))
-    # img = Image.open(imgstr)
-    # buffered = BytesIO()
-    # img.save(buffered, format='JEPG')
-    # image_b64 = base64.b64encode(buffered.getvalue())
-    with open(cloud_image_path, 'rb') as img:
-        image_b64 = base64.encodestring(img.read()).decode('gbk')
+    img_np = np.fromstring(imgdata, np.uint8)
+    img = cv2.imdecode(img_np, cv2.IMREAD_COLOR)
+    cv2.imwrite(cloud_image_path, img)
+    print('Cloud server has successfully received image')
+
+    image_b64 = object_detection(cloud_image_path)
     return image_b64
 
 def object_detect_server():
