@@ -36,6 +36,8 @@ window.addEventListener("DOMContentLoaded", function () {
         var img = new Image;
         img.src = imgData;
         img.onload = function () {//必须onload之后再画
+            var width = img.width;
+            var height = img.height;
             canvas.width = img.width;
             canvas.height = img.height;
             context.drawImage(img, 0, 0, img.width, img.height);

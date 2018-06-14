@@ -9,6 +9,16 @@ html,body{ width:100%;}
 	background: #70c9e3;
 }
 
+.buttons {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	margin: 10px;
+	text-align: center;
+	text-decoration: none;
+	font: bold 12px/25px Arial, sans-serif;
+}
+
 .button {
 	display: inline-block;
 	position: relative;
