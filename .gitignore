@@ -2,4 +2,5 @@ venv
 rosenv
 .vscode
 .DS_Store
+nohup.out
 __pycache__

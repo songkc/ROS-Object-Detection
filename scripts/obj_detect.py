@@ -157,8 +157,9 @@ def object_detection(image_path):
     # cv2.imshow('img', img)
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
-    detect_image_path = 'output/detect_image.jpg'
+    detect_image_path = 'static/images/detect_image.jpg'
     cv2.imwrite(detect_image_path, img)
     with open(detect_image_path, 'rb') as img:
         image_b64 = base64.encodestring(img.read()).decode('gbk')
+    os.remove(detect_image_path)
     return image_b64

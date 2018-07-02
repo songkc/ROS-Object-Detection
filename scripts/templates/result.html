@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
 {% block page_content %}
-    <img src="{{ url_for('static', filename='images/web_image.jpg') }}" >
-    <a href="{{ url_for('index') }}" class="button blue big">Back</a>
+    <canvas id="canvas" class="videoarea"></canvas>
+    <a href="{{ url_for('index') }}" class="button blue big" style="padding-top: 10px; margin-top: 10px">Back</a>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+    <script src="{{ url_for('static', filename='js/load.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
 {% endblock %}

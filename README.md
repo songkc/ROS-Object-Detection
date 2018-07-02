@@ -22,7 +22,17 @@ Training Project Cloud Robot Based on ROS
 
 
 
-## 2. 开发配置
+## 2. 数据库设计
+
+数据库设计了三个表，**origins** 存储上传的原图片存放的路径；**tagged** 存放对应上传图片的手动标记图片存放的路径，**isTagged** 代表是否已经被手动标记过；**results** 存储上传图片识别结果图片存放的路径；其中 **tagged** 和 **results** 的属性 **id** 都是以 **origins** 的属性 **id** 为外键。
+
+**tagged** 的图片可以通过标记工具手动标记图片中的物体然后训练模型提高识别率，或针对某一特定物体去标记然后训练识别特定物体的模型。
+
+![database](images/database.png)
+
+
+
+## 3. 开发配置
 
 开发环境：Ubuntu 16.04
 
@@ -32,7 +42,7 @@ Python: python3.5
 
 C++: C++11
 
-### 2.1 Ubuntu16.04 安装 python3.5
+### 3.1 Ubuntu16.04 安装 python3.5
 
 在终端下输入以下命令：
 
@@ -44,7 +54,7 @@ $ sudo apt-get install python3
 $ sudo apt install python-pip
 ```
 
-### 2.2 配置virtualenv
+### 3.2 配置virtualenv
 
 在终端下输入以下命令：
 
@@ -62,7 +72,7 @@ $ source rosenv/bin/activate
 $ pip install -r requirements.txt
 ```
 
-### 2.3 配置Tensorflow物体识别模块
+### 3.3 配置Tensorflow物体识别模块
 
 ```shell
 # 在创建rosenv路径下执行以下命令使用虚拟环境
@@ -109,33 +119,36 @@ $ python object_detection/builders/model_builder_test.py
 
 
 
-## 3. 文件结构
+## 4. 文件结构
 
 ```
-|-rosproject/
-    |-images/                       # 项目相关图片
+|-ROS_Object_Detection/
     |-srv/                          # 存放定义的服务
-        |-Img.srv                   # 图片服务    
+        |-Img.src                   # 定义传输图片服务
     |-scripts/                      # 脚本文件夹
-        |-input/                    # 存放上传的图片的文件夹
-        |-output/                   # 存放识别后的图片的文件夹
-    	|-static/                   # 静态文件
+        |-datbase/                  # 数据库文件夹
+            |-origins/              # 存放原图片文件夹
+            |-tagged/               # 存放待标记和已标记图片文件夹
+            |-results/              # 存放识别后的结果图片文件夹
+            |-database.py           # 配置数据库
+        |-object_detection/         # 物体识别模块
+        |-static/                   # 静态文件
             |-css/                  # css样式文件
                 |-style.css
             |-js/                   # js文件
                 |-jquery.js
+                |-load.js
                 |-upload.js
-            |-images/               # 图片、图标
-                |-favicon.ico
+            |-images/               # 项目相关图片、图标
    	    |-templates/                # html模版
-            |-base.html
+   	        |-base.html
    	        |-index.html
-            |-result.html
-        |-object_detection/         # 存放物体识别配置的文件夹
+   	        |-result.html
         |-cloud_server.py           # 服务器节点
+        |-db_manage.py              # 管理数据库脚本
         |-robot_client.py           # 客户端节点
-        |-obj_detect.py             # 物体识别
-        |-web_server.py             # web服务端
+        |-obj_detect.py             # 物体检测识别
+        |-web_server.py             # web端
     |-CMakeLists.txt                # 程序包元信息
     |-package.xml                   # 软件包清单
     |-README.md                     # README
@@ -144,7 +157,7 @@ $ python object_detection/builders/model_builder_test.py
 
 
 
-## 4. 运行项目
+## 5. 运行项目
 
 ```shell
 # 每次运行时需要先进入虚拟环境rosenv
@@ -184,7 +197,7 @@ $ rosrun rosproject cloud_server.py
 
 
 
-## 5. 项目进度
+## 6. 项目进度
 
 已完成：
 
@@ -192,10 +205,10 @@ $ rosrun rosproject cloud_server.py
 * 机器人节点（对较大的图片进行压缩）
 * 服务器节点（进行物体识别）
 * 物体检测模块
+* 数据库
 
 未完成：
 
-* 数据库
 * 训练模块
 
 

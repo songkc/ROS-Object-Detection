@@ -22,7 +22,7 @@ html,body{ width:100%;}
 .button {
 	display: inline-block;
 	position: relative;
-	margin: 10px;
+	margin: 0 auto;
 	padding: 0 20px;
 	text-align: center;
 	text-decoration: none;
@@ -87,7 +87,6 @@ html,body{ width:100%;}
 /* Big Button Style */
 .big {
 	padding: 0 40px;
-	padding-top: 10px;
 	height: 45px;
 	text-transform: uppercase;
 	font: bold 20px/22px Arial, sans-serif;

@@ -13,7 +13,7 @@ def object_detect_client(image_b64):
     rospy.wait_for_service('object_detect')
     try:
         print('Robot client has successfully received image')
-        robot_image_path = 'input/robot_image.jpg'
+        robot_image_path = 'static/images/robot_image.jpg'
         
         # transfrom foramt
         imgdata = base64.b64decode(image_b64)
@@ -32,6 +32,8 @@ def object_detect_client(image_b64):
 
         with open(robot_image_path, 'rb') as img:
             image_b64 = base64.encodestring(img.read()).decode('gbk')
+
+        os.remove(robot_image_path)
 
         detect = rospy.ServiceProxy('object_detect', Img)
         response = detect(image_b64)
