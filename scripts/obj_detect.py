@@ -40,10 +40,10 @@ MODEL_NAME = 'ssd_mobilenet_v1_coco_2017_11_17'
 
 
 # Path to frozen detection graph. This is the actual model that is used for the object detection.
-PATH_TO_CKPT = 'object_detection/' + MODEL_NAME + '/frozen_inference_graph.pb'
+PATH_TO_CKPT = 'object_detection/' + MODEL_NAME + '/output_inference_graph.pb'
 
 # List of the strings that is used to add correct label for each box.
-PATH_TO_LABELS = os.path.join('object_detection', 'data', 'mscoco_label_map.pbtxt')
+PATH_TO_LABELS = os.path.join('object_detection', 'data', 'raccoon_label_map.pbtxt')
 print(PATH_TO_LABELS)
 NUM_CLASSES = 90
 

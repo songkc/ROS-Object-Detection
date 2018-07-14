@@ -54,6 +54,7 @@ def detect(request):
     # insert database table origins, taged and results
     # connect to the database
     mydb = database()
+    mydb.createTable()
     mydb.insert("origins", "'" + origin_image_path + "'")
     mydb.insert("tagged", "'" + taged_image_path + "', FALSE")
     mydb.insert("results", "'" + result_image_path + "'")
