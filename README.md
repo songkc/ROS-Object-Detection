@@ -154,10 +154,10 @@ $ python object_detection/builders/model_builder_test.py
                 |-load.js
                 |-upload.js
             |-images/               # 项目相关图片、图标
-   	    |-templates/                # html模版
-   	        |-base.html
-   	        |-index.html
-   	        |-result.html
+        |-templates/                # html模版
+            |-base.html
+            |-index.html
+            |-result.html
         |-cloud_server.py           # 服务器节点
         |-db_manage.py              # 管理数据库脚本
         |-robot_client.py           # 客户端节点
